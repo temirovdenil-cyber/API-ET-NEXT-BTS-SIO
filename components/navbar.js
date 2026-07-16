@@ -9,13 +9,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/30 backdrop-blur-xl px-6 py-3">
           <Link 
             href="/" 
-            className="text-xl font-bold text-white"
-          >
-            <span className="text-indigo-400">MY</span> DIGITAL SCHOOL
+ className="text-xl font-bold text-white" >
+<span className="text-indigo-400">MY</span> DIGITAL SCHOOL
           </Link>
-
-
-          {/* Menu */}
           <div className="hidden md:flex items-center gap-8">
 
             <Link

@@ -1,6 +1,7 @@
+import Navbar from "@/components/navbar";
 export default function Home() {
-  return (
-    <main className="min-h-screen bg-linear-to-br from-[#0d0d2b] via-[#1a1a4e] to-[#0d0d2b] flex items-center justify-center">
+  return(
+        <><Navbar /><main className="min-h-screen bg-linear-to-br from-[#0d0d2b] via-[#1a1a4e] to-[#0d0d2b] flex items-center justify-center">
 
       <div className="text-center">
 
@@ -32,6 +33,6 @@ export default function Home() {
 
       </div>
 
-    </main>
+    </main></>
   )
 }
