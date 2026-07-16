@@ -26,65 +26,71 @@ export default function Avis() {
       })
       setPage('liste')
       setMenuOpen(false)
-    } catch (error) {
-      console.error('Erreur:', error)
+    } catch (err) {
+      console.error('Erreur:', err)
     }
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a1a] flex flex-col md:flex-row">
-      
-      {/* Sidebar desktop */}
-      <div className="hidden md:flex w-72 bg-[#0d0d1f] flex-col justify-between py-8 px-6">
+    <div className="min-h-screen bg-gradient-to-br from-[#0d0d2b] via-[#1a1a4e] to-[#0d0d2b] flex flex-col md:flex-row">
+      <div className="hidden md:flex w-64 bg-black/30 backdrop-blur border-r border-white/10 flex-col justify-between py-8 px-6">
         <div>
-          <div className="text-white font-bold text-lg mb-10">MY DIGITAL SCHOOL</div>
-          <nav className="space-y-2">
-            <button onClick={() => setPage('liste')} className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-white hover:bg-white/5">🏠 Accueil</button>
-            <button onClick={() => setPage('liste')} className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-white hover:bg-white/5">📬 Avis</button>
-            <button onClick={() => setPage('deposer')} className={`flex items-center gap-3 w-full px-4 py-3 rounded-lg text-white ${page === 'deposer' ? 'bg-indigo-500' : 'hover:bg-white/5'}`}>✏️ Déposer un avis</button>
+          <div className="flex items-center gap-2 mb-10">
+            <div className="w-8 h-8 bg-indigo-500 rounded-full"></div>
+            <span className="text-white font-bold">MY DIGITAL SCHOOL</span>
+          </div>
+          <nav className="space-y-1">
+            <button onClick={() => setPage('liste')} className={`flex items-center gap-3 w-full px-4 py-3 rounded-xl text-sm transition-colors ${page === 'liste' ? 'bg-indigo-500/20 text-indigo-300' : 'text-gray-400 hover:bg-white/5 hover:text-white'}`}>🏠 Accueil</button>
+            <button onClick={() => setPage('liste')} className="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-sm text-gray-400 hover:bg-white/5 hover:text-white transition-colors">📬 Avis</button>
+            <button onClick={() => setPage('deposer')} className={`flex items-center gap-3 w-full px-4 py-3 rounded-xl text-sm transition-colors ${page === 'deposer' ? 'bg-indigo-500 text-white' : 'text-gray-400 hover:bg-white/5 hover:text-white'}`}>✏️ Déposer un avis</button>
           </nav>
         </div>
-        <div className="flex items-center gap-3 bg-[#1a1a2e] rounded-full px-4 py-2">
-          <div className="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center text-white">👤</div>
+        <div className="flex items-center gap-3 bg-white/5 rounded-full px-4 py-2 border border-white/10">
+          <div className="w-9 h-9 bg-indigo-500/30 rounded-full flex items-center justify-center text-white text-sm">👤</div>
           <div>
             <div className="text-white text-sm font-medium">Mon profil</div>
             <div className="text-gray-400 text-xs">Voir mon profil</div>
           </div>
         </div>
       </div>
-
-      {/* Navbar mobile */}
-      <div className="md:hidden bg-[#0d0d1f] px-6 py-4 flex items-center justify-between">
-        <div className="text-white font-bold">MY DIGITAL SCHOOL</div>
-        <button onClick={() => setMenuOpen(!menuOpen)} className="text-white text-2xl">☰</button>
+      <div className="md:hidden bg-black/30 backdrop-blur border-b border-white/10 px-6 py-4 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-6 bg-indigo-500 rounded-full"></div>
+          <span className="text-white font-bold text-sm">MY DIGITAL SCHOOL</span>
+        </div>
+        <button onClick={() => setMenuOpen(!menuOpen)} className="text-white text-xl">☰</button>
       </div>
-
-      {/* Menu mobile ouvert */}
       {menuOpen && (
-        <div className="md:hidden bg-[#0d0d1f] px-6 py-4 space-y-2">
-          <button onClick={() => { setPage('liste'); setMenuOpen(false) }} className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-white hover:bg-white/5">🏠 Accueil</button>
-          <button onClick={() => { setPage('liste'); setMenuOpen(false) }} className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-white hover:bg-white/5">📬 Avis</button>
-          <button onClick={() => { setPage('deposer'); setMenuOpen(false) }} className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-white bg-indigo-500">✏️ Déposer un avis</button>
+        <div className="md:hidden bg-black/50 backdrop-blur px-6 py-4 space-y-1 border-b border-white/10">
+          <button onClick={() => { setPage('liste'); setMenuOpen(false) }} className="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-gray-300 hover:bg-white/5 text-sm">🏠 Accueil</button>
+          <button onClick={() => { setPage('liste'); setMenuOpen(false) }} className="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-gray-300 hover:bg-white/5 text-sm">📬 Avis</button>
+          <button onClick={() => { setPage('deposer'); setMenuOpen(false) }} className="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-white bg-indigo-500 text-sm">✏️ Déposer un avis</button>
         </div>
       )}
-
-      {/* Contenu */}
-      <div className="flex-1 p-6 md:p-12">
+      <div className="flex-1 p-6 md:p-10">
         {page === 'liste' ? (
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">Les avis</h1>
-            <p className="text-gray-400 mb-8">Découvrez les avis de nos étudiants</p>
+            <h1 className="text-2xl md:text-3xl font-bold text-white mb-1">Les avis</h1>
+            <p className="text-gray-400 text-sm mb-8">Découvrez les avis de nos étudiants</p>
             {avis.length === 0 ? (
-              <p className="text-gray-400">Aucun avis pour le moment.</p>
+              <div className="text-center py-16">
+                <div className="text-4xl mb-4">📭</div>
+                <p className="text-gray-400">Aucun avis pour le moment.</p>
+                <button onClick={() => setPage('deposer')} className="mt-4 text-indigo-400 hover:text-indigo-300 text-sm">Soyez le premier à laisser un avis →</button>
+              </div>
             ) : (
               <div className="space-y-4">
                 {avis.map((a) => (
-                  <div key={a.id} className="bg-[#1a1a2e] rounded-lg p-6">
-                    <div className="flex items-center justify-between mb-2">
+                  <div key={a.id} className="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6 hover:border-indigo-500/30 transition-colors">
+                    <div className="flex items-center justify-between mb-3">
                       <span className="font-semibold text-white">{a.name}</span>
-                      <span className="text-indigo-400">{'⭐'.repeat(a.rating)}</span>
+                      <div className="flex gap-1">
+                        {[1,2,3,4,5].map(s => (
+                          <span key={s} className={s <= a.rating ? 'text-indigo-400' : 'text-gray-600'}>★</span>
+                        ))}
+                      </div>
                     </div>
-                    <p className="text-gray-300">{a.description}</p>
+                    <p className="text-gray-300 text-sm">{a.description}</p>
                   </div>
                 ))}
               </div>
@@ -92,27 +98,27 @@ export default function Avis() {
           </div>
         ) : (
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">Laisser un avis</h1>
-            <p className="text-gray-400 mb-8">Partagez votre expérience avec les autres.</p>
+            <h1 className="text-2xl md:text-3xl font-bold text-white mb-1">Laisser un avis</h1>
+            <p className="text-gray-400 text-sm mb-8">Partagez votre expérience avec les autres.</p>
             <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl">
               <div>
-                <label className="block text-white text-sm mb-2">Titre de l'avis</label>
-                <input type="text" placeholder="Ex : service au top !" onChange={(e) => setTitre(e.target.value)} className="w-full bg-[#1a1a2e] text-white px-4 py-3 rounded-lg border border-gray-700 focus:outline-none focus:border-indigo-500" />
+                <label className="block text-gray-300 text-sm mb-1">Titre de l'avis</label>
+                <input type="text" placeholder="Ex : service au top !" onChange={(e) => setTitre(e.target.value)} className="w-full bg-white/5 text-white px-4 py-3 rounded-xl border border-white/10 focus:outline-none focus:border-indigo-400 placeholder:text-gray-500" />
               </div>
               <div>
-                <label className="block text-white text-sm mb-2">Votre avis</label>
-                <textarea placeholder="Décrivez votre expérience en détail..." rows={6} maxLength={1000} onChange={(e) => setDescription(e.target.value)} className="w-full bg-[#1a1a2e] text-white px-4 py-3 rounded-lg border border-gray-700 focus:outline-none focus:border-indigo-500 resize-none" />
-                <div className="text-right text-gray-400 text-sm">{description.length}/1000</div>
+                <label className="block text-gray-300 text-sm mb-1">Votre avis</label>
+                <textarea placeholder="Décrivez votre expérience en détail..." rows={6} maxLength={1000} onChange={(e) => setDescription(e.target.value)} className="w-full bg-white/5 text-white px-4 py-3 rounded-xl border border-white/10 focus:outline-none focus:border-indigo-400 placeholder:text-gray-500 resize-none" />
+                <div className="text-right text-gray-500 text-xs mt-1">{description.length}/1000</div>
               </div>
               <div>
-                <label className="block text-white text-sm mb-2">Votre note</label>
+                <label className="block text-gray-300 text-sm mb-2">Votre note</label>
                 <div className="flex gap-2">
                   {[1,2,3,4,5].map((star) => (
-                    <button key={star} type="button" onClick={() => setRating(star)} className={`text-3xl ${star <= rating ? 'text-indigo-500' : 'text-gray-600'}`}>★</button>
+                    <button key={star} type="button" onClick={() => setRating(star)} className={`text-3xl transition-colors ${star <= rating ? 'text-indigo-400' : 'text-gray-600 hover:text-gray-400'}`}>★</button>
                   ))}
                 </div>
               </div>
-              <button type="submit" className="w-full bg-indigo-500 hover:bg-indigo-400 text-white font-semibold py-3 rounded-lg">Publier mon avis</button>
+              <button type="submit" className="w-full bg-indigo-500 hover:bg-indigo-400 text-white font-semibold py-3 rounded-xl transition-colors">Publier mon avis</button>
             </form>
           </div>
         )}
