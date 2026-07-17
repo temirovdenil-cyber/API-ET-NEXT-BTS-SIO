@@ -1,5 +1,6 @@
 
 'use client'
+import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
 export default function Avis() {
@@ -9,12 +10,10 @@ export default function Avis() {
   const [rating, setRating] = useState(5)
   const [page, setPage] = useState('liste')
   const [menuOpen, setMenuOpen] = useState(false)
-  const [connecte, setConnecte] = useState(false)
+  const [connecte, setConnecte] = useState(() => Boolean(localStorage.getItem('token')))
   const [avisAModifier, setAvisAModifier] = useState(null)
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (token) setConnecte(true)
     fetch('http://localhost:5000/avis')
       .then(res => res.json())
       .then(data => setAvis(data.reviews || []))
@@ -128,7 +127,7 @@ export default function Avis() {
             <button onClick={() => { setPage('deposer'); setMenuOpen(false) }} className="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-white bg-indigo-500 text-sm">✏️ Déposer un avis</button>
           )}
           {!connecte && (
-            <a href="/login" className="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-white bg-indigo-500 text-sm">🔑 Se connecter</a>
+            <Link href="/login" className="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-white bg-indigo-500 text-sm">🔑 Se connecter</Link>
           )}
         </div>
       )}
@@ -138,7 +137,7 @@ export default function Avis() {
             <div className="flex items-center justify-between mb-1">
               <h1 className="text-2xl md:text-3xl font-bold text-white">Les avis</h1>
               {!connecte && (
-                <a href="/login" className="bg-indigo-500 hover:bg-indigo-400 text-white text-sm font-medium py-2 px-4 rounded-xl">Se connecter</a>
+                <Link href="/login" className="bg-indigo-500 hover:bg-indigo-400 text-white text-sm font-medium py-2 px-4 rounded-xl">Se connecter</Link>
               )}
             </div>
             <p className="text-gray-400 text-sm mb-8">Découvrez les avis de nos étudiants</p>
@@ -215,11 +214,11 @@ export default function Avis() {
         )}
         {page === 'modifier' && avisAModifier && (
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-white mb-1">Modifier l'avis</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-white mb-1">Modifier l&apos;avis</h1>
             <p className="text-gray-400 text-sm mb-8">Modifiez votre avis.</p>
             <form onSubmit={handleModifier} className="space-y-6 max-w-2xl">
               <div>
-                <label className="block text-gray-300 text-sm mb-1">Titre de l'avis</label>
+                <label className="block text-gray-300 text-sm mb-1">Titre de l&apos;avis</label>
                 <input type="text" defaultValue={avisAModifier.name} onChange={(e) => setTitre(e.target.value)} className="w-full bg-white/5 text-white px-4 py-3 rounded-xl border border-white/10 focus:outline-none focus:border-indigo-400" />
               </div>
               <div>

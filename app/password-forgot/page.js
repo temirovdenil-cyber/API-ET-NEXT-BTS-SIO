@@ -1,4 +1,6 @@
 'use client'
+import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 
 export default function ForgotPassword() {
@@ -22,13 +24,16 @@ export default function ForgotPassword() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#050510] via-[#0d0d1f] to-[#050510] flex flex-col">
       <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-     <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-indigo-500 rounded-full"></div>
-          <span className="text-white font-bold text-lg">MY DIGITAL SCHOOL</span></div>
-        <a href="/" className="text-white/70 hover:text-white text-sm">← Retour à l'accueil</a></div>
+    <div className="flex items-center gap-2">
+      <div className="w-8 h-8 bg-indigo-500 rounded-full"></div>
+      <span className="text-white font-bold text-lg">MY DIGITAL SCHOOL</span>
+    </div>
+    <Link href="/" className="text-white/70 hover:text-white text-sm">← Retour à l&apos;accueil</Link>
+  </div>
   <div className="flex flex-col md:flex-row flex-1 items-center px-6 md:px-0">
-        <div className="w-full md:w-1/2 md:px-16 mb-8 md:mb-0 pt-8 md:pt-0">
-<img src="/image-forgot.png" alt="forgot" className="max-w-xs w-full mb-6 hidden md:block" />      <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Mot de passe oublié</h1>
+    <div className="w-full md:w-1/2 md:px-16 mb-8 md:mb-0 pt-8 md:pt-0">
+      <Image src="/image-forgot.png" alt="forgot" width={400} height={300} className="max-w-xs w-full mb-6 hidden md:block" />
+      <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Mot de passe oublié</h1>
           <p className="text-gray-400 text-sm">Entrez votre mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.</p>  </div>
         <div className="w-full md:w-1/2 flex justify-center pb-8 md:pb-0">
           <div className="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8 w-full max-w-md">
@@ -47,7 +52,7 @@ export default function ForgotPassword() {
                 </div>
                 <button type="submit" className="w-full bg-indigo-500 hover:bg-indigo-400 text-white font-semibold py-3 rounded-xl transition-colors">Envoyer le lien</button>
                 <div className="text-center">
-                  <a href="/login" className="text-indigo-400 hover:text-indigo-300 text-sm">Retour à la connexion</a>
+                  <Link href="/login" className="text-indigo-400 hover:text-indigo-300 text-sm">Retour à la connexion</Link>
                 </div>
               </form>
             )}

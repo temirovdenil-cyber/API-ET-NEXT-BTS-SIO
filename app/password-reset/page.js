@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import { useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 
@@ -46,9 +47,9 @@ function ResetPasswordContent() {
           MY DIGITAL SCHOOL
         </div>
 
-        <button className="text-white">
-          Retour a l'accueil
-        </button>
+        <Link href="/" className="text-white">
+          Retour à l&apos;accueil
+        </Link>
       </div>
 
 
@@ -137,14 +138,9 @@ function ResetPasswordContent() {
 
 
           <div className="text-center mt-4">
-
-            <a
-              href="/login"
-              className="text-indigo-400 hover:text-indigo-300 text-sm"
-            >
+            <Link href="/login" className="text-indigo-400 hover:text-indigo-300 text-sm">
               Retour à la connexion
-            </a>
-
+            </Link>
           </div>
 
 

@@ -1,4 +1,6 @@
 'use client'
+import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 import { Register } from '@/services/register'
 
@@ -25,7 +27,6 @@ export default function RegisterPage() {
       console.log('Erreur réseau', err)
     }
   }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0d0d2b] via-[#1a1a4e] to-[#0d0d2b] flex flex-col">
       <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
@@ -37,7 +38,7 @@ export default function RegisterPage() {
       </div>
       <div className="flex flex-col md:flex-row flex-1">
         <div className="hidden md:flex w-1/2 items-center justify-center p-12">
-          <img src="/image-register.png" alt="register" className="max-w-md w-full object-contain" />
+          <Image src="/image-register.png" alt="register" width={520} height={400} className="max-w-md w-full object-contain" />
         </div>
         <div className="w-full md:w-1/2 flex flex-col justify-center px-6 md:px-16 py-8">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-1">Créer votre compte</h1>
@@ -68,7 +69,7 @@ export default function RegisterPage() {
             <button type="submit" className="w-full bg-indigo-500 hover:bg-indigo-400 text-white font-semibold py-3 rounded-xl transition-colors">S'inscrire</button>
           </form>
           <p className="text-gray-400 text-center mt-6 text-sm">
-            Déjà un compte ? <a href="/login" className="text-indigo-400 hover:text-indigo-300 font-medium">Se connecter</a>
+            Déjà un compte ? <Link href="/login" className="text-indigo-400 hover:text-indigo-300 font-medium">Se connecter</Link>
           </p>
         </div>
       </div>

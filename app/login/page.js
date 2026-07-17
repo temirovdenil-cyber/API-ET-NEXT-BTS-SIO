@@ -1,4 +1,6 @@
 'use client'
+import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 import { Login } from '@/services/login'
 import Toast from '@/components/toast'
@@ -35,7 +37,9 @@ export default function LoginPage() {
       {message && error && <Toast message={message} />}
       <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-indigo-500 rounded-full"> <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" /> </div>
+          <div className="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center">
+            <Image src="/logo.png" alt="Logo" width={24} height={24} className="object-contain" />
+          </div>
           <span className="text-white font-bold text-lg">MY DIGITAL SCHOOL</span>
         </div>
         <button onClick={() => window.history.back()} className="text-white/70 hover:text-white text-sm flex items-center gap-1">
@@ -44,7 +48,7 @@ export default function LoginPage() {
       </div>
       <div className="flex flex-col md:flex-row flex-1">
         <div className="hidden md:flex w-1/2 items-center justify-center p-12">
-          <img src="/image-login.png" alt="login" className="max-w-md w-full object-contain" />
+          <Image src="/image-login.png" alt="login" width={520} height={400} className="max-w-md w-full object-contain" />
         </div>
         <div className="w-full md:w-1/2 flex flex-col justify-center px-6 md:px-16 py-8">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-1">Bienvenue !</h1>
@@ -66,12 +70,12 @@ export default function LoginPage() {
                 <input type="checkbox" id="remember" className="w-4 h-4 accent-indigo-500" />
                 <label htmlFor="remember" className="text-gray-300 text-sm">Se souvenir de moi</label>
               </div>
-              <a href="/password-forgot" className="text-indigo-400 hover:text-indigo-300 text-sm">Mot de passe oublié ?</a>
+              <Link href="/password-forgot" className="text-indigo-400 hover:text-indigo-300 text-sm">Mot de passe oublié ?</Link>
             </div>
             <button type="submit" className="w-full bg-indigo-500 hover:bg-indigo-400 text-white font-semibold py-3 rounded-xl transition-colors">Se connecter</button>
           </form>
           <p className="text-gray-400 text-center mt-6 text-sm">
-            Pas de compte ? <a href="/register" className="text-indigo-400 hover:text-indigo-300 font-medium">S'inscrire</a>
+            Pas de compte ? <Link href="/register" className="text-indigo-400 hover:text-indigo-300 font-medium">S&apos;inscrire</Link>
           </p>
         </div>
       </div>
