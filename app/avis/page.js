@@ -1,4 +1,4 @@
-cat > app/avis/page.js << 'ENDOFFILE'
+
 'use client'
 import { useState, useEffect } from 'react'
 
@@ -246,4 +246,3 @@ export default function Avis() {
     </div>
   )
 }
-ENDOFFILE
